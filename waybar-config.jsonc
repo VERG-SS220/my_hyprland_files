@@ -1,0 +1,86 @@
+// Waybar config -- see https://github.com/Alexays/Waybar/wiki/Configuration
+{
+	"layer": "top",
+	"position": "top",
+	"height": 34,
+	"spacing": 6,
+
+	"modules-left": [
+		"custom/arch",
+		"wlr/taskbar"
+	],
+	"modules-center": [
+		"clock",
+		"custom/scratch"
+	],
+	"modules-right": [
+		"tray",
+		"custom/power"
+	],
+
+	// --- Left ---------------------------------------------------------------
+
+	"custom/arch": {
+		"format": "󰣇",
+		"tooltip-format": "Launch apps (SUPER+R)",
+		"on-click": "hyprlauncher"
+	},
+
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"icon-size": 20,
+		"tooltip-format": "{title}",
+		// Click jumps to the window (and therefore its workspace).
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"ignore-list": [
+			"wlogout"
+		]
+	},
+
+	// --- Center -------------------------------------------------------------
+
+	"clock": {
+		"format": "{:%a %d %b  %H:%M}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "month",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"days": "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
+	},
+
+	// Free slot for whatever you want next to the clock. The stub script
+	// prints nothing, so the module stays invisible until you fill it in.
+	"custom/scratch": {
+		"exec": "~/.config/waybar/scripts/scratch.sh",
+		"return-type": "json",
+		"interval": 5
+	},
+
+	// --- Right --------------------------------------------------------------
+
+	"tray": {
+		"icon-size": 18,
+		"spacing": 10
+	},
+
+	"custom/power": {
+		"format": "⏻",
+		"tooltip-format": "Power menu",
+		"on-click": "wlogout -n -b 3 -L 400 -R 400 -T 360 -B 360 -c 20"
+	}
+}

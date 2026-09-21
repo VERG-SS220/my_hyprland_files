@@ -1,0 +1,60 @@
+/* Round buttons, 3x1 grid: Restart / Shutdown / Lock.
+ *
+ * Launch with: wlogout -n -b 3 -L 400 -R 400 -T 360 -B 360 -c 20
+ *
+ * The buttons stretch to fill their grid cell, so a circle only happens when
+ * the cell is square -- that is entirely down to the launch margins, not CSS
+ * (GTK has no aspect-ratio). For a 1920x1080 surface:
+ *   width  = (1920 - L - R - 2*c) / 3 - 2*margin = 340
+ *   height = (1080 - T - B)           - 2*margin = 340
+ * Change the resolution or any flag and both lines have to be re-balanced,
+ * otherwise the circles turn back into ellipses.
+ *
+ *   -n  keep the surface on one monitor (spanning both screens doubles the
+ *       width and flattens the buttons)
+ */
+
+* {
+	background-image: none;
+	box-shadow: none;
+}
+
+window {
+	background-color: rgba(12, 12, 12, 0.9);
+}
+
+button {
+	margin: 10px;
+	border-radius: 50%;
+
+	border: 2px solid #3700B3;
+	background-color: #1E1E1E;
+	color: #FFFFFF;
+	font-size: 18px;
+	text-decoration-color: #FFFFFF;
+
+	background-repeat: no-repeat;
+	background-position: center 32%;
+	background-size: 26%;
+
+	/* drop the label into the lower part of the circle, clear of the icon */
+	padding-top: 170px;
+}
+
+button:focus, button:active, button:hover {
+	background-color: #3700B3;
+	border-color: #FFFFFF;
+	outline-style: none;
+}
+
+#reboot {
+	background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+}
+
+#shutdown {
+	background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+}
+
+#lock {
+	background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
+}

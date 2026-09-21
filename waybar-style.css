@@ -1,0 +1,125 @@
+/* Waybar style -- see https://github.com/Alexays/Waybar/wiki/Styling */
+
+@define-color bg        rgba(26, 27, 38, 0.92);
+@define-color surface   rgba(41, 46, 66, 0.85);
+@define-color fg        #c0caf5;
+@define-color muted     #6d7396;
+@define-color accent    #7aa2f7;
+@define-color urgent    #f7768e;
+
+* {
+	font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+	font-size: 13px;
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+}
+
+window#waybar {
+	background: @bg;
+	color: @fg;
+}
+
+/* --- Arch / launcher button -------------------------------------------- */
+
+#custom-arch {
+	color: @accent;
+	font-size: 19px;
+	padding: 0 14px 0 12px;
+	margin: 4px 2px 4px 6px;
+	border-radius: 8px;
+	background: @surface;
+}
+
+#custom-arch:hover {
+	color: @bg;
+	background: @accent;
+}
+
+/* --- Task list --------------------------------------------------------- */
+
+#taskbar {
+	background: @surface;
+	border-radius: 8px;
+	margin: 4px 2px;
+	padding: 0 4px;
+}
+
+#taskbar button {
+	padding: 0 6px;
+	border-radius: 6px;
+	border-bottom: 2px solid transparent;
+	background: transparent;
+}
+
+#taskbar button.active {
+	border-bottom: 2px solid @accent;
+	background: rgba(122, 162, 247, 0.15);
+}
+
+#taskbar button:hover {
+	background: rgba(192, 202, 245, 0.12);
+}
+
+#taskbar button.urgent {
+	border-bottom: 2px solid @urgent;
+	background: rgba(247, 118, 142, 0.18);
+}
+
+/* --- Center ------------------------------------------------------------ */
+
+#clock {
+	background: @surface;
+	border-radius: 8px;
+	margin: 4px 2px;
+	padding: 0 14px;
+	font-weight: bold;
+}
+
+#custom-scratch {
+	color: @muted;
+	padding: 0 8px;
+}
+
+/* --- Right ------------------------------------------------------------- */
+
+#tray {
+	background: @surface;
+	border-radius: 8px;
+	margin: 4px 2px;
+	padding: 0 10px;
+}
+
+#tray > .passive {
+	-gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+	-gtk-icon-effect: highlight;
+	background: @urgent;
+	border-radius: 8px;
+}
+
+#custom-power {
+	color: @urgent;
+	font-size: 15px;
+	padding: 0 12px;
+	margin: 4px 6px 4px 2px;
+	border-radius: 8px;
+	background: @surface;
+}
+
+#custom-power:hover {
+	color: @bg;
+	background: @urgent;
+}
+
+tooltip {
+	background: @bg;
+	border: 1px solid @surface;
+	border-radius: 8px;
+}
+
+tooltip label {
+	color: @fg;
+}

@@ -1,0 +1,18 @@
+# Notification timeouts, by urgency level. See mako(5).
+#
+# ignore-timeout=1 makes these timeouts win over the expire timeout an app
+# requests. Without it apps that send expire_timeout=0 -- common for critical
+# notifications -- would keep hanging around forever, which is mako's default
+# behaviour (default-timeout=0) and the reason they never disappeared.
+
+ignore-timeout=1
+default-timeout=10000
+
+[urgency=low]
+default-timeout=5000
+
+[urgency=normal]
+default-timeout=10000
+
+[urgency=critical]
+default-timeout=20000
